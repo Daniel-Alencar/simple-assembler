@@ -3,7 +3,7 @@
 #include <string.h>
 
 int main(){
-  char teste[50] = "lw $s0, 555($s1)";
+  char teste[50] = "sw $s0, -100($t1)";
   char *first, *aux;
   int lenght;
 

@@ -35,18 +35,7 @@ TIPO I
 addi $s0 $s1 28
 beq $s0 $s1 for
 lw $s0, 555($s1)
-
-lw $s0, 555($s1) => {
-  strchr('('); posição do primeiro '(', posiçãoFinalDoNumero
-  voltando caracter-caracter até ',' ou ' ' e contando tamanho, posicaoInicialDoNumero
-  memcpy(posiçãoInicial, str, tam);
-}
-
-lw $s0,555555($s1)5555555
-
-strchr('(');
-memset(str, ' ', 6);
-memove(($s1), source, number);
+sw $s0, -100($t1)
 
 Criar char **guardarResultado[4]
 
