@@ -10,7 +10,6 @@ int main(){
   first = strchr(teste, '(');
 
   printf("%s\n", first);
-  printf("# %s\n", teste + strlen(first));
 
   for(lenght = 0; strcmp(teste + strlen(teste) - strlen(first) - lenght, ","); lenght++){
     printf("$ %d\n", lenght);
