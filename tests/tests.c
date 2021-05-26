@@ -4,14 +4,13 @@
 
 int main(){
   char teste[] = "lw $s0, 5($s1)";
-  char *first;
+  char *first, *aux;
   int lenght;
 
   first = strchr(teste, '(');
-
   printf("%s\n", first);
 
-  for(lenght = 0; strcmp(teste + strlen(teste) - strlen(first) - lenght, ","); lenght++){
-    printf("$ %d\n", lenght);
-  }
+  for(lenght = 0; !(aux = strpbrk(teste + strlen(teste) - strlen(first) - lenght, ", ")); lenght++);
+  
+  printf("!%s\n", aux);
 }
