@@ -5,13 +5,13 @@
 int main(int argc, char *argv[]){
     if(argc > 3 || argc < 2){
         puts("Sintaxe de parametros invalida!");
-        puts("Digite: [executavel.exe] [arquivo_de_entrada.asm] [arquivo_de_saida](opicional)");
+        puts("Digite: [executavel] [arquivo_de_entrada.asm] [arquivo_de_saida](opicional)");
         puts("Erro 0!");
         exit(0);
     } else {
         FILE *inputFile, *outputFile;
         int typePosition = strlen(argv[1]) - strlen(".asm");
-        char *defaultName = "output.dat";
+        char *defaultName = "memoria.dat";
 
         if(strcmp(argv[1] + typePosition, ".asm")){
             puts("Arquivo de entrada precisa ter a extensao '.asm'");

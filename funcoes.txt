@@ -1,0 +1,6 @@
+Modelo para R => função:function
+Modelo para I e J => função:opcode
+
+add:100010, sub, and, or, xor, slt, jr,
+addi:100001, beq, bne, lw, sw,
+j:000010, jal:000011,

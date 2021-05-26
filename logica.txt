@@ -1,0 +1,81 @@
+TIPO R
+add $s0 $s1 $s2
+
+Criar char **guardarResultado[6]
+
+Identificar o tipo R ("instrução:")
+Preencher o opcode 000000 no guardarResultado[0]
+Funct identificado no arquivo 'funcoes.txt' (colocar no guardarResultado)
+Procurar na tabela de registradores o valor do registrador '$s0' (colocar no guardarResultado[3] (rd))
+Procurar na tabela de registradores o valor do registrador '$s1'(colocar no guardarResultado[1] (rs))
+Procurar na tabela de registradores o valor do registrador '$s2'(colocar no guardarResultado[2] (rt))
+SHAMT?
+
+-000000 #opcode
+-10010 #rs
+-10000 #rt
+-10001 #rd
+-00000 #shamt
+-100010 #funct
+
+
+
+
+
+TIPO I
+addi $s0 $s1 28
+beq $s0 $s1 for
+lw $s0, 555($s1)
+
+lw $s0, 555($s1) => {
+  strchr('('); posição do primeiro '(', posiçãoFinalDoNumero
+  voltando caracter-caracter até ',' ou ' ' e contando tamanho, posicaoInicialDoNumero
+  memcpy(posiçãoInicial, str, tam);
+}
+
+lw $s0,555555($s1)5555555
+
+strchr('(');
+memset(str, ' ', 6);
+memove(($s1), source, number);
+
+Criar char **guardarResultado[4]
+
+Identificar o tipo I ("instrução:")
+Opcode identificado no arquivo 'funcoes.txt' (colocar no guardarResultado[0])
+Procurar na tabela de registradores o valor do registrador '$s0' (colocar no guardarResultado[2] (rt))
+Procurar na tabela de registradores o valor do registrador '$s1'(colocar no guardarResultado[1] (rs))
+
+if(label) {
+  Leitura e procura do 'for' no arrayAuxiliarParaLabels, identificar a posição e procurar valor correspondente em linhaDosLabels
+  Manipular o valor da linhaDosLabels para formar o target address
+  Concatenar os valores do guardarResultado
+} else {
+  Transformar o número '28' em binário e colocar 0's à esquerda
+  Concatenar os valores do guardarResultado
+}
+
+-000000 #opcode
+-10010 #rs
+-10000 #rt
+-0000 0000 0000 0000 #imm
+
+
+
+
+
+TIPO J
+j for
+
+Criar char **guardarResultado[2]
+Criar char **arrayAuxiliarParaLabels
+Criar int linhaDosLabels[]
+
+Identificar o tipo J ("instrução:")
+Opcode identificado no arquivo 'funcoes.txt' (colocar no guardarResultado)
+Leitura e procura do 'for' no arrayAuxiliarParaLabels, identificar a posição e procurar valor correspondente em linhaDosLabels
+Manipular o valor da linhaDosLabels para formar o target address
+Concatenar os valores do guardarResultado
+
+-000000 #opcode
+-00 0000 0000 0000 0000 0000 0000 #target address
