@@ -1,15 +1,24 @@
 TIPO R
 add $s0 $s1 $s2
+sll $s0 $s1 $s2
+jr $s0
 
 Criar char **guardarResultado[6]
 
 Identificar o tipo R ("instrução:")
 Preencher o opcode 000000 no guardarResultado[0]
 Funct identificado no arquivo 'funcoes.txt' (colocar no guardarResultado)
-Procurar na tabela de registradores o valor do registrador '$s0' (colocar no guardarResultado[3] (rd))
-Procurar na tabela de registradores o valor do registrador '$s1'(colocar no guardarResultado[1] (rs))
-Procurar na tabela de registradores o valor do registrador '$s2'(colocar no guardarResultado[2] (rt))
-SHAMT?
+
+if(numeroDeRegistradores > 1) {
+  Procurar na tabela de registradores o valor do registrador '$s0' (colocar no guardarResultado[3] (rd))
+  Procurar na tabela de registradores o valor do registrador '$s1'(colocar no guardarResultado[1] (rs))
+  Procurar na tabela de registradores o valor do registrador '$s2'(colocar no guardarResultado[2] (rt))
+} else {
+  Colocar 00000 no guardarResultado[3] (rd)
+  Procurar na tabela de registradores o valor do registrador '$s0' (colocar no guardarResultado[1] (rs))
+  Colocar 00000 no guardarResultado[2] (rt)
+}
+Shamt é 00000 (por enquanto)
 
 -000000 #opcode
 -10010 #rs
