@@ -3,13 +3,6 @@
 #include<stdlib.h>
 #include "./useful.h"
 
-int main() {
-  char string[40] = "000110";
-  strcpy(string, fillWithZeros(string, 6, 26));
-
-  printf("%s\n", string);
-}
-
 char * convertDecimalToBinary(int decimal) {
   int i, restoDaDivisaoInt;
   char restoDaDivisaoChar;
@@ -54,17 +47,16 @@ int lengthOfString(char *string) {
 }
 
 
-char * fillWithZeros(char *string, int length, int amount) {
+void fillWithZeros(char *string, int length, int amount) {
   int total = (length + amount);
-  char *stringWithZeros = (char *) malloc(sizeof(char) * total);
+  char *stringWithZeros = (char *) malloc(sizeof(char) * (total + 1));
   int i;
   char aux;
 
+  strcpy(stringWithZeros, string);
   for(i = length; i < total ; i++) {
-    aux = string[i];
-    string[i] = '0';
-    string[i + 1] = aux;
+    stringWithZeros[i] = '0';
+    stringWithZeros[i + 1] = '\0';
   }
-
-  return stringWithZeros;
+  printf("%s\n", stringWithZeros);
 }
