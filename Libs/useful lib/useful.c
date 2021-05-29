@@ -3,6 +3,11 @@
 #include<stdlib.h>
 #include "./useful.h"
 
+int main() {
+  char *str = (convertDecimalToBinary(5));
+  printf("%s\n", str);
+}
+
 char * convertDecimalToBinary(int decimal) {
   int i, restoDaDivisaoInt;
   char restoDaDivisaoChar;
