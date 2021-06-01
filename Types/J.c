@@ -1,10 +1,10 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-#include "../Libs/useful lib/useful.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "../Libs/useful lib/useful.c"
 
 int main() {
-  char intruction[] = "j for";
+  char instruction[] = "j for";
 
   int i, j;
   int row = 3;
@@ -48,8 +48,8 @@ int main() {
 
   // Manipular o valor da linhaDosLabels para formar o target address
 
-  // binaryString = *convertDecimalToBinary(linhaDoLabelNoArquivo);
-  // printf("%s\n", binaryString);
+  binaryString = convertDecimalToBinary(linhaDoLabelNoArquivo);
+  printf("%s\n", binaryString);
   // reverseString(binaryString);
   // int length = lengthOfString(binaryString);
   // int amount = 26 - length;
