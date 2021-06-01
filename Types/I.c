@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "../Libs/useful lib/useful.c"
 #include "../Libs/useful lib/registers.h"
+#include "../Libs/clean lib/switchposition.c"
+#include "../Libs/clean lib/removetokens.c"
+#include "../Libs/clean lib/separatetokens.c"
 
 char **labels;
 int *labelsPositions;
@@ -10,29 +13,22 @@ int *labelsPositions;
 void instructionI(char *instruction, char *opcode);
 
 int main(){
-  /*
-    int i;
-    char instruction[] = "addi $s0 $s1 12";
+    //char instruction[] = "addi $s0, $s1, 12";
+    char instruction[] = "addi $s0, -100($s1)";
+    char *partsOfInstruction[4];
+    char *aux = strpbrk(instruction, "()");
 
-    labels = (char **) malloc(sizeof(char *) * 2);
-    for(i = 0; i < 2; i++) {
-      labels[i] = (char *) malloc(sizeof(char) * 10);
+    if(aux){
+      switchPosition(instruction);
     }
-    labelsPositions = (int *) malloc(sizeof(int) * 10);
+    removeTokens(instruction);
+    separateTokens(instruction, partsOfInstruction);
 
-    strcpy(labels[0], "for");
-    labelsPositions[0] = 5;
-    
-    instructionJ(instruction, "000010");
-  */
-    char instruction[] = "addi $s0, $s1, 12";
-    char *aux = NULL;
-
-    aux = strpbrk(instruction, "()");
-    
-    if(aux) {
-      switchPosition(char *);
+    printf("[");
+    for(int i = 0; i < 4; i++){
+      printf("%s, ", partsOfInstruction[i]);
     }
+    printf("\b\b]");
 }
 
 void instructionI(char *instruction, char *opcode){

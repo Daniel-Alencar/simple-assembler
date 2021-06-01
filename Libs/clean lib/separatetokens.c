@@ -1,20 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
-void separateTokens(char *);
+void separateTokens(char *string, char *array[]){
+    int i = 0;
+    char *character = strtok(string, ",() ");
 
-int main(){
-    char string[] = "sw $s0,     ($t1)-100";
-
-    separateTokens(string);
-}
-
-void separateTokens(char *string){
-    char *character;
-    
-    character = strtok(string, ",() ");
     while (character){
-        printf ("%s\n", character);
+        array[i] = (char *)malloc(strlen(character));
+
+        strcpy(array[i], character);
         character = strtok(NULL, ",() ");
+        i++;
     }
 }
