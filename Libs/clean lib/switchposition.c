@@ -6,6 +6,7 @@ void switchPosition(char *);
 
 int main(){
   char string[50] = "sw $s0, -100($t1)";
+  //char string[50] = "addi $s0, $t1, 100";
 
   switchPosition(string);
   
