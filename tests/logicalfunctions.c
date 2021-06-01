@@ -8,7 +8,7 @@ int main (){
 
     logicalFunctions(string1, string2, string, label);
     
-    printf("%s", string);
+    printf("%s\n", string);
 }
 
 void logicalFunctions(char *string1, char *string2, char *string, char *label){
