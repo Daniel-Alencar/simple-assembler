@@ -30,15 +30,12 @@ int main() {
   labelsPositions = (int *) malloc(sizeof(int) * 10);
   labelsPositions[0] = 5;
 
-
-
   partsOfIntruction[0] = (char *) malloc(sizeof(char) * 7);
   partsOfIntruction[1] = (char *) malloc(sizeof(char) * 27);
 
   // Identificar o tipo da instrução e o opcode na leitura do arquivo.txt
 
   strcpy(opcode, "000010");
-
   strcpy(partsOfIntruction[0], opcode);
 
   // Leitura e procura do 'for' no labels, identificar a posição e procurar valor correspondente em linhaDosLabels
@@ -49,18 +46,10 @@ int main() {
   // Manipular o valor da linhaDosLabels para formar o target address
 
   binaryString = convertDecimalToBinary(linhaDoLabelNoArquivo);
-  printf("%s\n", binaryString);
-  // reverseString(binaryString);
-  // int length = lengthOfString(binaryString);
-  // int amount = 26 - length;
-  // fillWithZeros(binaryString, length, amount);
-  // reverseString(binaryString);
-  // strcpy(partsOfIntruction[1], binaryString);
 
-  // Concatenar valores
-  
-  // strcpy(instructionInBinary, partsOfIntruction[0]);
-  // strcat(instructionInBinary, partsOfIntruction[1]);
+  sprintf(partsOfIntruction[1], "%026s", binaryString);
+  strcpy(instructionInBinary, partsOfIntruction[0]);
+  strcat(instructionInBinary, partsOfIntruction[1]);
 
-  // printf("%s\n", instructionInBinary);
+  printf("%s\n", instructionInBinary);
 }

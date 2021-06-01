@@ -47,16 +47,16 @@ int lengthOfString(char *string) {
 }
 
 
-void fillWithZeros(char *string, int length, int amount) {
-  int total = (length + amount);
-  char *stringWithZeros = (char *) malloc(sizeof(char) * (total + 1));
-  int i;
-  char aux;
+// void fillWithZeros(char *string, int length, int amount) {
+//   int total = (length + amount);
+//   char *stringWithZeros = (char *) malloc(sizeof(char) * (total + 1));
+//   int i;
+//   char aux;
 
-  strcpy(stringWithZeros, string);
-  for(i = length; i < total ; i++) {
-    stringWithZeros[i] = '0';
-    stringWithZeros[i + 1] = '\0';
-  }
-  printf("%s\n", stringWithZeros);
-}
+//   strcpy(stringWithZeros, string);
+//   for(i = length; i < total ; i++) {
+//     stringWithZeros[i] = '0';
+//     stringWithZeros[i + 1] = '\0';
+//   }
+//   printf("%s\n", stringWithZeros);
+// }
