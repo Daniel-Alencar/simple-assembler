@@ -10,7 +10,7 @@
 void instructionI(char *instruction, char *opcode, char *result);
 
 int main(){
-    char instruction[] = "beq, $v0, $at, end", result[33];
+    char instruction[] = "bne, $v0, $at, end", result[33];
     instructionI(instruction, "100100", result);
 }
 
