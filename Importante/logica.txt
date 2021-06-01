@@ -70,9 +70,9 @@ Criar char **arrayAuxiliarParaLabels
 Criar int linhaDosLabels[]
 
 Identificar o tipo J ("instrução:")
-Opcode identificado no arquivo 'funcoes.txt' (colocar no guardarResultado)
+Opcode identificado no arquivo 'funcoes.txt' (colocar no guardarResultado[0])
 Leitura e procura do 'for' no arrayAuxiliarParaLabels, identificar a posição e procurar valor correspondente em linhaDosLabels
-Manipular o valor da linhaDosLabels para formar o target address
+Manipular o valor da linhaDosLabels para formar o target address (colocar em guardarResultado[1])
 Concatenar os valores do guardarResultado
 
 -000000 #opcode
