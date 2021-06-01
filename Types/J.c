@@ -6,11 +6,12 @@
 char **labels;
 int *labelsPositions;
 
-void instructionJ(char *instruction, char *opcode);
+void instructionJ(char *instruction, char *opcode, char *result);
 
 int main() {
   int i;
   char instruction[] = "j for";
+  char result[33];
 
   labels = (char **) malloc(sizeof(char *) * 2);
   for(i = 0; i < 2; i++) {
@@ -20,14 +21,14 @@ int main() {
 
   strcpy(labels[0], "for");
   labelsPositions[0] = 5;
-  
-  instructionJ(instruction, "000010");
+
+  instructionJ(instruction, "100100", result);
+  printf("%s\n", result);
 }
 
-void instructionJ(char *instruction, char *opcode){
+void instructionJ(char *instruction, char *opcode, char *result){
   int i;
   char targetAddress[27];
-  char instructionInBinary[33];
   char label[10];
 
   char *binaryString = (char *) malloc(sizeof(char) * 27);
@@ -41,9 +42,7 @@ void instructionJ(char *instruction, char *opcode){
 
   binaryString = convertDecimalToBinary(labelsPositions[i]);
   
-  strcpy(instructionInBinary, opcode);
+  strcpy(result, opcode);
   sprintf(targetAddress, "%026s", binaryString);
-  strcat(instructionInBinary, targetAddress);
-
-  printf("%s\n", instructionInBinary);
+  strcat(result, targetAddress);
 }

@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include "./useful.h"
 
-char * convertDecimalToBinary(int decimal) {
+char *convertDecimalToBinary(int decimal) {
   int i, restoDaDivisaoInt;
   char restoDaDivisaoChar;
   char *binaryNumber = (char *) malloc(sizeof(char) * 10);
