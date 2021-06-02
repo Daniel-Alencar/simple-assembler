@@ -1,2 +1,2 @@
 ### simple-assembler
-#Simple assembler for some MIPS intructions
+# Simple assembler for some MIPS intructions
