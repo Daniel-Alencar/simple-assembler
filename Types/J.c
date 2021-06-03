@@ -35,6 +35,6 @@ void instructionJ(char *instruction, char *opcode, char *result){
   binaryString = convertDecimalToBinary(labelsPositions[i]);
   
   strcpy(result, opcode);
-  sprintf(targetAddress, "%026s", binaryString);
+  sprintf(targetAddress, "%026d", atoi(binaryString));
   strcat(result, targetAddress);
 }

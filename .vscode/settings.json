@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "registers.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "useful.h": "c"
     }
 }

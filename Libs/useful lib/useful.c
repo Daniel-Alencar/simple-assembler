@@ -17,6 +17,10 @@ char *convertDecimalToBinary(int decimal) {
   }
   binaryNumber[i] = '\0';
   reverseString(binaryNumber);
+
+  if(decimal < 0) {
+    complementOfTwo(binaryNumber);
+  }
   
   return binaryNumber;
 }
@@ -44,4 +48,11 @@ int lengthOfString(char *string) {
   for(length = 0; string[length] != '\0' ; length++);
 
   return length;
+}
+
+void complementOfTwo(char *binaryNumber) {
+  int i;
+  for(i = 0; i < strlen(binaryNumber); i++){
+    binaryNumber[i] = convertIntegerToCaracter((binaryNumber[i] - '0') ^ 1);
+  }
 }
