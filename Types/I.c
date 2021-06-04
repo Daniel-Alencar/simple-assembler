@@ -10,8 +10,8 @@
 void instructionI(char *instruction, char *opcode, char *result, int lineNumber);
 
 int main(){
-    char instruction[] = "bne $s0, $s1, for", result[33];
-    instructionI(instruction, "000101", result, 9);
+    char instruction[] = "addi $s0, $s1, 42", result[33];
+    instructionI(instruction, "001000", result, 1);
 }
 
 void instructionI(char *instruction, char *opcode, char *result, int lineNumber){

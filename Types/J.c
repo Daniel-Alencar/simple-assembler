@@ -4,22 +4,20 @@
 #include "../Libs/useful lib/useful.c"
 #include "../Libs/useful lib/global.c"
 
-void instructionJ(char *instruction, char *opcode, char *result, int lineNumber);
+void instructionJ(char *instruction, char *opcode, char *result);
 
 int main() {
   char instruction[] = "j for";
   char result[33];
 
-  instructionJ(instruction, "100100", result, 10);
+  instructionJ(instruction, "000010", result);
   printf("%s\n", result);
 }
 
-void instructionJ(char *instruction, char *opcode, char *result, int lineNumber){
+void instructionJ(char *instruction, char *opcode, char *result){
   int i;
   char targetAddress[27];
-  char label[51];
-
-  char *binaryString = (char *) malloc(sizeof(char) * 27);
+  char label[33];
   
   // Leitura e procura do 'for' no labels, identificar a posição e procurar valor correspondente em linhaDosLabels
   sscanf(instruction, "%*s %s", label);
@@ -31,10 +29,8 @@ void instructionJ(char *instruction, char *opcode, char *result, int lineNumber)
   }
 
   // Manipular o valor da linhaDosLabels para formar o target address
-
-  binaryString = convertDecimalToBinary(labelsPositions[i] - (lineNumber + 1));
+  strcpy(targetAddress, convertDecimalToBinary(labelsPositions[i] - 1, 26));
   
   strcpy(result, opcode);
-  sprintf(targetAddress, "%026s", binaryString);
   strcat(result, targetAddress);
 }
