@@ -11,7 +11,7 @@ void instructionI(char *instruction, char *opcode, char *result, int lineNumber)
 
 int main(){
     char instruction[] = "bne $s0, $s1, for", result[33];
-    instructionI(instruction, "000101", result, 10);
+    instructionI(instruction, "000101", result, 9);
 }
 
 void instructionI(char *instruction, char *opcode, char *result, int lineNumber){
@@ -29,11 +29,11 @@ void instructionI(char *instruction, char *opcode, char *result, int lineNumber)
     strcpy(result, opcode);
 
     for(i = 0; strcmp(partsOfInstruction[1], registers[i]); i++);
-    sprintf(temporary, "%05d", atoi(convertDecimalToBinary(i)));
+    strcpy(temporary, convertDecimalToBinary(i, 5));
     strcat(result, temporary);
 
     for(i = 0; strcmp(partsOfInstruction[2], registers[i]); i++);
-    sprintf(temporary, "%05d", atoi(convertDecimalToBinary(i)));
+    strcpy(temporary, convertDecimalToBinary(i, 5));
     strcat(result, temporary);
 
     for(i = 0, isLabel = 0; i < 32; i++){
@@ -44,15 +44,9 @@ void instructionI(char *instruction, char *opcode, char *result, int lineNumber)
     }
 
     if(isLabel) {
-      sprintf(temporary, "%016s", convertDecimalToBinary(labelsPositions[i] - (lineNumber + 1)));
+      strcpy(temporary, convertDecimalToBinary(labelsPositions[i] - (lineNumber + 1), 16));
     } else {
-      sprintf(temporary, "%016s", convertDecimalToBinary(atoi(partsOfInstruction[3])));
-    }
-
-    for(i = 0; i < strlen(temporary); i++) {
-      if(temporary[i] == ' ') {
-        temporary[i] = '0';
-      }
+      strcpy(temporary, convertDecimalToBinary(atoi(partsOfInstruction[3]), 16));
     }
 
     strcat(result, temporary);

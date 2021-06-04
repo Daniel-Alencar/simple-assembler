@@ -9,10 +9,10 @@
 //   printf("%s\n", str);
 // }
 
-char *convertDecimalToBinary(int decimal) {
+char *convertDecimalToBinary(int decimal, int amount) {
   int i, restoDaDivisaoInt, originalDecimal = decimal;
   char restoDaDivisaoChar;
-  char *binaryNumber = (char *) malloc(sizeof(char) * 17);
+  char *binaryNumber = (char *) malloc(sizeof(char) * 33);
 
   if(decimal < 0) {
     decimal *= -1;
@@ -28,10 +28,10 @@ char *convertDecimalToBinary(int decimal) {
   binaryNumber[i] = '\0';
   reverseString(binaryNumber);
 
-
+  fillWithZeros(binaryNumber, amount);
 
   if(originalDecimal < 0) {
-    complementOfTwo(binaryNumber);
+    complementOfTwo(binaryNumber, amount);
   }
 
   return binaryNumber;
@@ -69,11 +69,9 @@ void complementOfOne(char *binaryNumber) {
   }
 }
 
-void complementOfTwo(char binaryNumber[]) {
+void complementOfTwo(char binaryNumber[], int amount) {
   int i, length;
-  sprintf(binaryNumber, "%016d", atoi(binaryNumber));
-
-  printf("%s\n", binaryNumber);
+  sprintf(binaryNumber, "%0*d", amount, atoi(binaryNumber));
 
   length = lengthOfString(binaryNumber);
 
@@ -88,16 +86,11 @@ void complementOfTwo(char binaryNumber[]) {
   }
 }
 
-char *fillWithZeros(char *string, int length, int amount) {
-  int total = (length + amount);
-  char *stringWithZeros = (char *) malloc(sizeof(char) * (total + 1));
-  int i;
-  char aux;
-
-  strcpy(stringWithZeros, string);
-  for(i = length; i < total ; i++) {
-    stringWithZeros[i] = '0';
-    stringWithZeros[i + 1] = '\0';
+void fillWithZeros(char string[], int amount) {
+  sprintf(string, "%0*d", amount, atoi(string));
+  for(int i = 0; i < strlen(string); i++) {
+    if(string[i] == ' ') {
+      string[i] = '0';
+    }
   }
-  return stringWithZeros;
 }
