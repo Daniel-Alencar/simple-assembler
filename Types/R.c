@@ -16,40 +16,28 @@ int main(){
 }
 
 void instructionR(char *instruction, char *function, char *result, int lineNumber){
-    int i, isLabel;
-    char *partsOfInstruction[4], temporary[16];
-    char *aux = strpbrk(instruction, "()");
-
-    if(aux){
-      switchPosition(instruction);
-    }
+    int i;
+    char *partsOfInstruction[4], temporary[17];
 
     removeTokens(instruction);
     separateTokens(instruction, partsOfInstruction);
 
-    strcpy(result, function);
-
-    for(i = 0; strcmp(partsOfInstruction[1], registers[i]); i++);
-    strcpy(temporary, convertDecimalToBinary(i, 5));
-    strcat(result, temporary);
+    strcpy(result, "000000");
 
     for(i = 0; strcmp(partsOfInstruction[2], registers[i]); i++);
     strcpy(temporary, convertDecimalToBinary(i, 5));
     strcat(result, temporary);
 
-    for(i = 0, isLabel = 0; i < 32; i++){
-      if(!strcmp(labels[i], partsOfInstruction[3])){
-        isLabel = 1;
-        break;
-      }
-    }
-
-    if(isLabel) {
-      strcpy(temporary, convertDecimalToBinary(labelsPositions[i] - (lineNumber + 1), 16));
-    } else {
-      strcpy(temporary, convertDecimalToBinary(atoi(partsOfInstruction[3]), 16));
-    }
-
+    for(i = 0; strcmp(partsOfInstruction[3], registers[i]); i++);
+    strcpy(temporary, convertDecimalToBinary(i, 5));
     strcat(result, temporary);
+
+    for(i = 0; strcmp(partsOfInstruction[1], registers[i]); i++);
+    strcpy(temporary, convertDecimalToBinary(i, 5));
+    strcat(result, temporary);
+
+    strcat(result, "00000");
+
+    strcat(result, function);
     printf("%s\n", result);
 }
