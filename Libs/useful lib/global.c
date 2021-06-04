@@ -7,7 +7,7 @@ char registers[][6] = {"$zero", "$at", "$v0", "$v1", "$a0", "$a1", "$a2", "$a3",
 //int *labelsPositions;
 
 char labels[][6] = {"main", "for", "end", "exit"};
-int labelsPositions[] = {1, 5, 11, 15};
+int labelsPositions[] = {1, 7, 11, 15};
 
 /*
 labels = (char **) malloc(sizeof(char *) * 2);

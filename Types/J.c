@@ -4,17 +4,17 @@
 #include "../Libs/useful lib/useful.c"
 #include "../Libs/useful lib/global.c"
 
-void instructionJ(char *instruction, char *opcode, char *result);
+void instructionJ(char *instruction, char *opcode, char *result, int lineNumber);
 
 int main() {
   char instruction[] = "j for";
   char result[33];
 
-  instructionJ(instruction, "100100", result);
+  instructionJ(instruction, "100100", result, 10);
   printf("%s\n", result);
 }
 
-void instructionJ(char *instruction, char *opcode, char *result){
+void instructionJ(char *instruction, char *opcode, char *result, int lineNumber){
   int i;
   char targetAddress[27];
   char label[51];
@@ -32,9 +32,9 @@ void instructionJ(char *instruction, char *opcode, char *result){
 
   // Manipular o valor da linhaDosLabels para formar o target address
 
-  binaryString = convertDecimalToBinary(labelsPositions[i]);
+  binaryString = convertDecimalToBinary(labelsPositions[i] - (lineNumber + 1));
   
   strcpy(result, opcode);
-  sprintf(targetAddress, "%026d", atoi(binaryString));
+  sprintf(targetAddress, "%026s", binaryString);
   strcat(result, targetAddress);
 }

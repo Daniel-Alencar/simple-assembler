@@ -3,13 +3,19 @@
 #include<stdlib.h>
 #include "./useful.h"
 
+// int main() {
+//   int number = -42;
+//   char *str = convertDecimalToBinary(number);
+//   printf("%s\n", str);
+// }
+
 char *convertDecimalToBinary(int decimal) {
   int i, restoDaDivisaoInt, originalDecimal = decimal;
   char restoDaDivisaoChar;
-  char *binaryNumber = (char *) malloc(sizeof(char) * 10);
+  char *binaryNumber = (char *) malloc(sizeof(char) * 17);
 
   if(decimal < 0) {
-    decimal = 0 - decimal;
+    decimal *= -1;
   }
 
   for(i = 0; decimal >= 1; i++) {
@@ -22,10 +28,11 @@ char *convertDecimalToBinary(int decimal) {
   binaryNumber[i] = '\0';
   reverseString(binaryNumber);
 
+
+
   if(originalDecimal < 0) {
     complementOfTwo(binaryNumber);
   }
-  printf("%s\n", binaryNumber);
 
   return binaryNumber;
 }
@@ -62,41 +69,35 @@ void complementOfOne(char *binaryNumber) {
   }
 }
 
-void complementOfTwo(char *binaryNumber) {  
-  int n;  // variable declaration  
-  printf("Enter the number of bits do you want to enter :");  
-  scanf("%d",&n);  
-  char onescomplement[n+1]; // onescomplement array declaration   
-  char twoscomplement[n+1]; // twoscomplement array declaration  
-  int carry=1; // variable initialization  
-  printf("\nEnter the BinaryNumber number : ");  
-  printf("%s", BinaryNumber);  
-  printf("\nThe ones complement of the BinaryNumber number is :");  
-    
-  // Finding onescomplement in C  
-  for(int i=0;i<n;i++) {  
-    if(BinaryNumber[i]=='0')  
-    onescomplement[i]='1';  
-    else if(BinaryNumber[i]=='1')  
-    onescomplement[i]='0';  
-  }  
-  onescomplement[n]='\0';  
-  printf("%s",onescomplement);  
-    
+void complementOfTwo(char binaryNumber[]) {
+  int i, length;
+  sprintf(binaryNumber, "%016d", atoi(binaryNumber));
+
+  printf("%s\n", binaryNumber);
+
+  length = lengthOfString(binaryNumber);
+
+  for(i = (length - 1); binaryNumber[i] == '0'; i--);
   
-  printf("\nThe twos complement of a BinaryNumber number is : ");  
-  
-  // Finding twoscomplement in C  
-  for(int i=n-1; i>=0; i--) {  
-    if(onescomplement[i] == '1' && carry == 1) {  
-      twoscomplement[i] = '0';  
-    } else if(onescomplement[i] == '0' && carry == 1) {  
-      twoscomplement[i] = '1';  
-      carry = 0;  
-    } else {  
-      twoscomplement[i] = onescomplement[i];  
-    }  
-  }  
-  twoscomplement[n]='\0';  
-  printf("%s",twoscomplement);  
-}  
+  for(i--; i >= 0; i--) {
+    if(binaryNumber[i] == '0') {
+      *(binaryNumber + i) = '1';
+    } else {
+      *(binaryNumber + i) = '0';
+    }
+  }
+}
+
+char *fillWithZeros(char *string, int length, int amount) {
+  int total = (length + amount);
+  char *stringWithZeros = (char *) malloc(sizeof(char) * (total + 1));
+  int i;
+  char aux;
+
+  strcpy(stringWithZeros, string);
+  for(i = length; i < total ; i++) {
+    stringWithZeros[i] = '0';
+    stringWithZeros[i + 1] = '\0';
+  }
+  return stringWithZeros;
+}
