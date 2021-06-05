@@ -99,10 +99,11 @@ Concatenar os valores do guardarResultado
 // =========================================================================================== //
 
 // Tratando comentários e linha com caracter vazio //
-str = "main: \0hgfhgfjhgfhfhjfhf"
+
+str = "main: \0(comentário)"
 str = "add $s0 $zero $zero"
-str = "add $s1 $zero $zero \0fmdasnksvnasdsvndas"
-str = "\0dasbdadsadsasdadad". str[0] == "" || str[0] == '\n'
+str = "add $s1 $zero $zero \0(comentário)"
+str = "\0(comentário)". str[0] == "" || str[0] == '\n'
 str = "\n"
 strchr('#');
 
