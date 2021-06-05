@@ -9,7 +9,7 @@ void getLabels(FILE *file);
 
 int main() {
   FILE *file;
-  file = fopen("file 3.asm", "r");
+  file = fopen("file 3.0.asm", "r");
   getLabels(file);
 }
 
@@ -19,44 +19,71 @@ void readOnCodeFile(FILE *file) {
 
 void getLabels(FILE *file) {
   char string[30];
-  int i;
+  char aux;
+  int i, j;
 
   int validRow = 0;
+
   int labelsCounter = 0;
   int labelsPositionsCounter = 0;
   int rowsCounter = 0;
 
   int boolean = 1;
 
-  // Pegar o Label (caso exista)
-  for(i = 0; boolean; i++) {
-    // Considerando inicialmente que não pode começar com 'espaço'
+  for(j = 0; feof(file) == 0; j++) {
 
-    string[i] = getc(file);
+    // Pegar o Label (considerando que sempre exista)
+    for(i = 0; boolean; i++) {
+      // Considerando inicialmente que não pode começar com 'espaço'
 
-    if(string[i] == ':') {
-      string[i] = '\0';
-      strcpy(labels[labelsCounter], string); 
+      string[i] = getc(file);
 
-      printf("%s\n", labels[labelsCounter]);
-      labelsCounter++;
+      if(string[i] == ':') {
+        string[i] = '\0';
+        strcpy(labels[labelsCounter], string); 
 
-      boolean = 0;
+        printf("- %s => ", labels[labelsCounter]);
+        labelsCounter++;
+
+        boolean = 0;
+      }
     }
-  }
 
-  // Setar a linha REAL que aquele Label se encontra
-  for(i = 0; validRow == 0; i++) {
-    string[i] = getc(file);
+    // Setar a linha REAL que aquele Label se encontra
+    for(i = 0; validRow == 0; i++) {
+      string[i] = getc(file);
 
-    if(string[i] != ' ' && string[i] != '\n' && string[i] != '#') {
-      validRow = 1;
-      rowsCounter++;
+      if(string[i] != ' ' && string[i] != '\n') {
+        validRow = 1;
+        rowsCounter++;
 
-      labelsPositions[labelsPositionsCounter] = rowsCounter;
+        labelsPositions[labelsPositionsCounter] = rowsCounter;
 
-      printf("%d\n", labelsPositions[labelsPositionsCounter]);
-      labelsPositionsCounter++;
+        printf("%d -\n", labelsPositions[labelsPositionsCounter]);
+        labelsPositionsCounter++;
+
+        // Jogar o ponteiro para o '\n' da linha
+        // printf("# ");
+        while(aux = getc(file), aux != '\n') {
+          // printf("%c", aux);
+        }
+        // printf("\n");
+
+      } else if(string[i] == '#') {
+        // Jogar o ponteiro para o '\n' da linha
+        printf("# ");
+        while(aux = getc(file), aux != '\n') {
+          printf("%c", aux);
+        }
+        printf("\n");
+
+      }
     }
+    validRow = 0;
+    boolean = 1;
+
+
   }
+  printf("ACABOU");
+
 }

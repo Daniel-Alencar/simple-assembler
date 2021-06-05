@@ -93,8 +93,9 @@ Concatenar os valores do guardarResultado
 ==> "\n"
 
 ====> Labels
-==> "main: jr $s0\n"
-==> "main:\n"
+==> "main: jr $s0\n" => [X]
+==> "main:\n" => [X]
+==> "main: #(comentário)\n" => [X]
 
 // =========================================================================================== //
 
