@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "../Libs/useful lib/useful.c"
 #include "../Libs/useful lib/global.c"
-
+ 
 void instructionJ(char *instruction, char *opcode, char *result);
 
 int main() {
