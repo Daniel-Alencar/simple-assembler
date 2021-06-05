@@ -12,6 +12,7 @@ void instructionR(char *instruction, char *function, char *result, int lineNumbe
 int main(){
     int rowOnFile = 1;
     char instruction[] = "add $s0, $s1, $s2", result[33];
+
     instructionR(instruction, "100100", result, rowOnFile);
 }
 

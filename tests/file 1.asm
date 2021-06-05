@@ -1,4 +1,5 @@
-main: add $s0 $zero $zero
+main: 
+			add $s0 $zero $zero
 			add $s1 $zero $zero
 			addi $t0 $zero 6
 			addi $t1 $zero 12

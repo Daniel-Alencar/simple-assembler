@@ -77,3 +77,35 @@ Concatenar os valores do guardarResultado
 
 -000000 #opcode
 -00 0000 0000 0000 0000 0000 0000 #target address
+
+
+// =========================================================================================== //
+
+=======> Leitura do assembly
+====> Comentários
+==> "#(a,b)* add $s0, $s1, $s2\n"
+
+
+
+==> "add $s0, $s1, $s2 #(a,b)*\n"
+
+====> Linha vazia
+==> "\n"
+
+====> Labels
+==> "main: jr $s0\n"
+==> "main:\n"
+
+// =========================================================================================== //
+
+// Tratando comentários e linha com caracter vazio //
+str = "main: \0hgfhgfjhgfhfhjfhf"
+str = "add $s0 $zero $zero"
+str = "add $s1 $zero $zero \0fmdasnksvnasdsvndas"
+str = "\0dasbdadsadsasdadad". str[0] == "" || str[0] == '\n'
+str = "\n"
+strchr('#');
+
+// Tratando labels //
+
+strcspn(':');
