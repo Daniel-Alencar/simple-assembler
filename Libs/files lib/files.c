@@ -11,6 +11,10 @@ int main() {
   FILE *file;
   file = fopen("file 3.0.asm", "r");
   getLabels(file);
+
+  for(int i = 0; i < 10 ; i++) {
+    printf("|| %s => %d ||\n", labels[i], labelsPositions[i]);
+  }
 }
 
 void readOnCodeFile(FILE *file) {
@@ -42,7 +46,7 @@ void getLabels(FILE *file) {
         string[i] = '\0';
         strcpy(labels[labelsCounter], string); 
 
-        printf("- %s => ", labels[labelsCounter]);
+        printf("|| %s => ", labels[labelsCounter]);
         labelsCounter++;
 
         boolean = 0;
@@ -53,37 +57,34 @@ void getLabels(FILE *file) {
     for(i = 0; validRow == 0; i++) {
       string[i] = getc(file);
 
-      if(string[i] != ' ' && string[i] != '\n') {
+      if(string[i] == '#') {
+        // Jogar o ponteiro para o '\n' da linha
+        // printf("(cerquilha) ");
+        while(aux = getc(file), aux != '\n') {
+          // printf("%c", aux);
+        }
+        // printf("\n\n");
+
+      } else if ((string[i] != ' ') && (string[i] != '\n') && (string[i] != 9)) {
+
         validRow = 1;
         rowsCounter++;
 
         labelsPositions[labelsPositionsCounter] = rowsCounter;
 
-        printf("%d -\n", labelsPositions[labelsPositionsCounter]);
+        printf("%d ||\n", labelsPositions[labelsPositionsCounter]);
         labelsPositionsCounter++;
 
         // Jogar o ponteiro para o '\n' da linha
-        // printf("# ");
+        // printf("(espaço) ");
         while(aux = getc(file), aux != '\n') {
           // printf("%c", aux);
         }
-        // printf("\n");
-
-      } else if(string[i] == '#') {
-        // Jogar o ponteiro para o '\n' da linha
-        printf("# ");
-        while(aux = getc(file), aux != '\n') {
-          printf("%c", aux);
-        }
-        printf("\n");
-
+        // printf("\n\n");
       }
     }
     validRow = 0;
     boolean = 1;
-
-
   }
   printf("ACABOU");
-
 }
