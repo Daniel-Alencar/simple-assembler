@@ -4,6 +4,7 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "useful.h": "c",
-        "csv reader.h": "c"
+        "csv reader.h": "c",
+        "cstdio": "c"
     }
 }
