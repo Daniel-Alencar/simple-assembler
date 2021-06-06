@@ -12,6 +12,7 @@ int main() {
   file = fopen("file 3.0.asm", "r");
   getLabels(file);
 
+  printf("ACABOU\n");
 }
 
 void readOnCodeFile(FILE *file) {
@@ -21,7 +22,7 @@ void readOnCodeFile(FILE *file) {
 void getLabels(FILE *file) {
   char string[30];
   char aux;
-  int i, j;
+  int i, j, chegouNoFinalDoArquivo = 0;
 
   int validRow = 0;
 
@@ -31,7 +32,7 @@ void getLabels(FILE *file) {
 
   int boolean = 1;
 
-  for(j = 0; feof(file) == 0; j++) {
+  for(j = 0; !chegouNoFinalDoArquivo; j++) {
 
     // Pegar o Label (considerando que sempre exista)
     for(i = 0; boolean; i++) {
@@ -93,6 +94,8 @@ void getLabels(FILE *file) {
           } else if(feof(file) == 0) {
             // Chegamos no final do arquivo
             printf("FEOF\n");
+            chegouNoFinalDoArquivo = 1;
+
             break;
           }
         }
