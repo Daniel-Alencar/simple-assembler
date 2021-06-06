@@ -12,9 +12,6 @@ int main() {
   file = fopen("file 3.0.asm", "r");
   getLabels(file);
 
-  for(int i = 0; i < 10 ; i++) {
-    printf("|| %s => %d ||\n", labels[i], labelsPositions[i]);
-  }
 }
 
 void readOnCodeFile(FILE *file) {
@@ -61,7 +58,7 @@ void getLabels(FILE *file) {
         // Jogar o ponteiro para o '\n' da linha
         // printf("(cerquilha) ");
         while(aux = getc(file), aux != '\n') {
-          // printf("%c", aux);
+          // printf("2");
         }
         // printf("\n\n");
 
@@ -78,13 +75,36 @@ void getLabels(FILE *file) {
         // Jogar o ponteiro para o '\n' da linha
         // printf("(espaço) ");
         while(aux = getc(file), aux != '\n') {
-          // printf("%c", aux);
+          // printf("1");
         }
         // printf("\n\n");
+
+
+        // ===============================================================================
+        // Verificando se tem mais algum caractere útil ou se chegamos no fim do arquivo
+        FILE *auxFile = file;
+        while(aux = getc(file), 1) {
+          if((aux != ' ') && (aux != '\n') && (aux != 9)) {
+            // Caractere válido encontrado
+            printf("%c\n", aux);
+
+            fseek(file, -1, SEEK_CUR);
+            break;
+          } else if(feof(file) == 0) {
+            // Chegamos no final do arquivo
+            printf("FEOF\n");
+            break;
+          }
+        }
+        // ===============================================================================
+
       }
     }
     validRow = 0;
     boolean = 1;
   }
-  printf("ACABOU");
+  // while(aux = getc(file), feof(file) == 0) {
+  //   printf("%c", aux);
+  // }
+  // printf("\n");
 }
