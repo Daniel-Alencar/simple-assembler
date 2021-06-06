@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-cleanLineOfFile(FILE *, char *, int *);
+void cleanLineOfFile(FILE *, char *, int *);
 
 int main(){
-    int *rows;
+    int rows[10];
     FILE *input;
     char str[101];
 
@@ -15,14 +15,11 @@ int main(){
 
 }
 
-cleanLineOfFile(FILE *file, char *string, int *lines){
-    size_t i = 0;
-    char backup[strlen(string)], label[101], *aux;
+void cleanLineOfFile(FILE *file, char *string, int *lines){
+    char *aux;
 
     do{
         fgets(string, 101, file);
-
-        strcpy(backup, string);
 
         //remove comentario da linha
         while(aux = strchr(string, '#')){
@@ -35,11 +32,27 @@ cleanLineOfFile(FILE *file, char *string, int *lines){
         }
 
         //---------tab trocado por espaço
-        if(strcmp(string, "\n") && strcmp(string, "\0")){
-            i = strcspn(string, ":");
-            if(i){
-                printf("%s\t%d\n", string, i);
-            }
+        if(string[0] != '\n' && string[0] != '\0'){
+            // printf("%s\n", string);
+            // int i = strcspn(string, ":");
+            // if(i != strlen(string)){
+            //     printf("%s\n", string);
+            // }
+            splitLabel(string, aux);
+            printf("%s\n", aux);
         }
+        printf("%s\n", string);
     } while(!feof(file));
+}
+
+void splitLabel(char *string, char *result){
+    for(int i = 0; i < strlen(string); i++){
+        if(string[i] != ':'){
+            result = (char *)realloc(result, sizeof(char) * i);
+            result[i] = string[i];
+        } else {
+            return;
+        }
+    }
+    return;
 }
