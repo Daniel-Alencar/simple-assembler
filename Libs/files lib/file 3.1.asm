@@ -1,5 +1,6 @@
-qualquer1: add $s0 $zero $zero
-qualquer2: add $s1 $zero $zero
+qualquer1: add $s0 $zero $zero # (comentário)
+  add $s1 $zero $zero
+  # (comentário)
 qualquer3: addi $t0 $zero 6
 qualquer4: addi $t1 $zero 12
 qualquer5: addi $t2 $zero 3

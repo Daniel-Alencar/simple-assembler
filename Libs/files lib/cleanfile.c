@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../useful lib/global.c"
+#include "../files lib/identify.c"
 
 void cleanLineOfFile(FILE *, char *);
 char *splitLabel(char *string);
@@ -16,21 +17,23 @@ int main(){
     cleanLineOfFile(input, str);
 
     for(int i = 0; i < 10; i++){
-        printf("-%s-%d-\n", labels[i], labelsPositions[i]);
+        printf("%s\t%d\n", labels[i], labelsPositions[i]);
     }
 }
 
 void cleanLineOfFile(FILE *file, char *string){
     char *aux;
     char aux1;
-    int numberOfLabels = 0, linePosition = 0, labelsPositionsCounter = 0;
+    int numberOfLabels = 0, linePosition = 0;
     int changeNumberOfLabels = 0;
+    char **instructions;
 
+    instructions = (char **)malloc(sizeof(char *));
     labels = (char **)malloc(sizeof(char *));
     labelsPositions = (int *)malloc(sizeof(int));
 
     do{
-        if(fgets(string, 101, file) == NULL){
+        if(!fgets(string, 101, file)){
             break;
         }
         
@@ -53,7 +56,6 @@ void cleanLineOfFile(FILE *file, char *string){
 
         //se for linha válida
         if(strcmp(string, "\n") && strcmp(string, "\0") && strcmp(string, " ")){
-            // linePosition++;
             aux = splitLabel(string);
             if(aux){
                 numberOfLabels++;
@@ -77,7 +79,6 @@ void cleanLineOfFile(FILE *file, char *string){
             
             if(strcmp(string, "\n") && strcmp(string, "\0") && strcmp(string, " ")){
                 linePosition++;
-                // printf("||%s||\n", string);
                 
                 if(changeNumberOfLabels) {
                     labelsPositions = (int *)realloc(labelsPositions, sizeof(int) * numberOfLabels);
@@ -85,9 +86,15 @@ void cleanLineOfFile(FILE *file, char *string){
 
                     changeNumberOfLabels = 0;
                 }
+                
+                instructions = (char **)realloc(instructions, sizeof(char *) * linePosition);
+                instructions[linePosition - 1] = (char *)malloc(sizeof(char) * (strlen(string) + 1));
+                strcpy(instructions[linePosition - 1], string);
             }
         }
     } while(!feof(file));
+    
+    identifyInstruction(instructions);
 }
 
 char *splitLabel(char *string){
