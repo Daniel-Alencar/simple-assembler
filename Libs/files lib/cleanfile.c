@@ -2,17 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../useful lib/global.c"
-#include "../files lib/identify.c"
+#include "identify.c"
 
 void cleanLineOfFile(FILE *, char *);
 char *splitLabel(char *string);
 
 int main(){
-    int rows[10];
     FILE *input;
     char str[101];
 
-    input = fopen("file 3.0.asm", "r");
+    input = fopen("file 3.1.asm", "r");
 
     cleanLineOfFile(input, str);
 }
@@ -90,7 +89,7 @@ void cleanLineOfFile(FILE *file, char *string){
         }
     } while(!feof(file));
 
-    identifyInstruction(instructions);
+    identifyInstruction(instructions, linePosition);
 }
 
 char *splitLabel(char *string){

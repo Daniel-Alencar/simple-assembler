@@ -2,17 +2,31 @@
 #include <stdlib.h>
 #include <string.h>
 
-void identifyInstruction(char **instructions){
-    char *aux;
+void identifyInstruction(char **instructions, int amount){
+    int line = 0;
+    char *part, *aux, *locale;
+    FILE *funcoes;
 
-    for(int i = 0; i < 10; i++){
-        aux = strtok(instructions[i], " ,");
+    funcoes = fopen("../../Importante/funcoes.txt", "r");
 
-        // while(aux = strchr(aux, '\n')){
-        //     strcpy(aux, "\0");
-        // }
-        strcat(aux, ":");
+    printf("--%s--\n", fgets(aux, 101, funcoes));
+    // if(!fgets(aux, 101, funcoes)){
+    //     printf("%s-%d\n", aux, line);
+    // }
+    // for(int i = 0; i < amount; i++){
+    //     part = strtok(instructions[i], " ,");
 
-        printf("%s\n", aux);
-    }
+    //     do{
+    //         if(!fgets(aux, 101, funcoes)){
+    //             printf("%s-%d\n", aux, line);
+    //             break;
+    //         }
+
+    //         // fgets(aux, 101, funcoes);
+    //         // while(aux){
+    //         //     line++;
+                
+    //         // }
+    //     } while(!feof(funcoes));
+    // }
 }
