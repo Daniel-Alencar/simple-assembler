@@ -19,23 +19,21 @@ main:
 	move	$s1,$v0		# Return value saved in $v0. This is y ($s1)
 
 	# Print msg1
-	li	$v0, 4		# print_string syscall code = 4
+	li	$v0, 4		# print_string  code = 4
 	la	$a0, msg1
-	syscall
 
 	# Print result (y)
-	li	$v0,1		# print_int syscall code = 1
+	li	$v0,1		# print_int  code = 1
 	move	$a0, $s1	# Load integer to print in $a0
-	syscall
 
 	# Print newline
-	li	$v0,4		# print_string syscall code = 4
+	li	$v0,4		# print_string  code = 4
 	la	$a0, lf
-	syscall
+	
 
 	# Exit
 	li	$v0,10		# exit
-	syscall
+	
 
 # ------------------------------------------------------------------
 	

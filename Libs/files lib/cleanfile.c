@@ -15,10 +15,6 @@ int main(){
     input = fopen("file 3.0.asm", "r");
 
     cleanLineOfFile(input, str);
-
-    for(int i = 0; i < 10; i++){
-        printf("%s\t%d\n", labels[i], labelsPositions[i]);
-    }
 }
 
 void cleanLineOfFile(FILE *file, char *string){
@@ -93,7 +89,7 @@ void cleanLineOfFile(FILE *file, char *string){
             }
         }
     } while(!feof(file));
-    
+
     identifyInstruction(instructions);
 }
 
