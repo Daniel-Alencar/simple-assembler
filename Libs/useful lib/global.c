@@ -6,7 +6,7 @@ char registers[][6] = {"$zero", "$at", "$v0", "$v1", "$a0", "$a1", "$a2", "$a3",
 //char **labels;
 //int *labelsPositions;
 
-char labels[20][15];
+char **labels;
 int labelsPositions[20];
 
 /*
