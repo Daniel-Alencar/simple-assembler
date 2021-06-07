@@ -3,7 +3,7 @@
 #include <string.h>
 #include "../useful lib/global.c"
 
-void cleanLineOfFile(FILE *, char *, int *);
+void cleanLineOfFile(FILE *, char *);
 char *splitLabel(char *string);
 
 int main(){
@@ -13,19 +13,20 @@ int main(){
 
     input = fopen("file 3.0.asm", "r");
 
-    cleanLineOfFile(input, str, rows);
+    cleanLineOfFile(input, str);
 
-    for(int i = 0; i < 3; i++){
-        printf("%s\n", labels[i]);
+    for(int i = 0; i < 10; i++){
+        printf("%d\n", rows[i]);
     }
 
 }
 
-void cleanLineOfFile(FILE *file, char *string, int *lines){
+void cleanLineOfFile(FILE *file, char *string){
     char *aux;
-    int i = 0;
+    int i = 0, j = 0;
 
     labels = (char **)malloc(sizeof(char *));
+    labelsPositions = (int *)malloc(sizeof(int));
 
     do{
         fgets(string, 101, file);
@@ -42,13 +43,18 @@ void cleanLineOfFile(FILE *file, char *string, int *lines){
 
         //---------tab trocado por espaço
         if(string[0] != '\n' && string[0] != '\0'){
+            j++;
+
             aux = splitLabel(string);
             if(aux){
                 i++;
+
                 labels = (char **)realloc(labels, sizeof(char *) * i);
                 labels[i - 1] = (char *)malloc(sizeof(char) * strlen(aux));
-
                 strcpy(labels[i - 1], aux);
+
+                // labelsPositions = (int *)realloc(labelsPositions, sizeof(int) * i);
+                // labelsPositions[i - 1] = j;
             }
         }
     } while(!feof(file));
