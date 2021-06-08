@@ -76,6 +76,7 @@ void cleanLineOfFile(FILE *file, FILE *out){
     } while(!feof(file));
 
     numbOfLabels = numberOfLabels;
+    
     identifyInstruction(instructions, out, linePosition);
 }
 
@@ -100,10 +101,10 @@ char *splitLabel(char *string){
 void identifyInstruction(char **instructions, FILE *out, int amount){
     int line;
     char *aux, string[101], part[101], opcodeOrFunction[10], backup[101], result[101];
-    FILE *funcoes;
-
-    funcoes = fopen("../../funcoes.txt", "r");
-
+    FILE *funcoes = NULL;
+    
+    funcoes = fopen("funcoes.txt", "r");
+    
     for(int i = 0; i < amount; i++){
         line = 0;
 
@@ -143,11 +144,10 @@ void identifyInstruction(char **instructions, FILE *out, int amount){
             }
         }
         rewind(funcoes);
-        printf("-%s-\n", result);
-            // writeInFile(result, out);
+        writeInFile(result, out);
     }
 }
 
 void writeInFile(char *string, FILE *output){
-    printf("%s\n", string);
+    fputs(string, output);
 }
