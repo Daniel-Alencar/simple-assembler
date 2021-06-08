@@ -7,6 +7,7 @@
         "csv reader.h": "c",
         "cstdio": "c",
         "types.h": "c",
-        "prototype.h": "c"
+        "prototype.h": "c",
+        "global.h": "c"
     }
 }

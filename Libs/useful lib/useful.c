@@ -42,25 +42,11 @@ void reverseString(char *string) {
   }
 }
 
-int lengthOfString(char *string) {
-  int length;
-  for(length = 0; string[length] != '\0' ; length++);
-
-  return length;
-}
-
-void complementOfOne(char *binaryNumber) {
-  unsigned int i;
-  for(i = 0; i < strlen(binaryNumber); i++){
-    binaryNumber[i] = convertIntegerToCaracter((binaryNumber[i] - '0') ^ 1);
-  }
-}
-
 void complementOfTwo(char binaryNumber[], int amount) {
   int i, length;
   sprintf(binaryNumber, "%0*d", amount, atoi(binaryNumber));
 
-  length = lengthOfString(binaryNumber);
+  length = strlen(binaryNumber);
 
   for(i = (length - 1); binaryNumber[i] == '0'; i--);
   

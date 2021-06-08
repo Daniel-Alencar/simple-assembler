@@ -1,29 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../useful lib/global.h"
-#include "../clean lib/prototype.h"
-#include "../clean lib/removetokens.c"
-#include "../clean lib/separatetokens.c"
-#include "../clean lib/switchposition.c"
+#include "../global.h"
+#include "../clean lib/clean.h"
+#include "../clean lib/clean.c"
 #include "../useful lib/useful.h"
 #include "../useful lib/useful.c"
 #include "../../Types/types.h"
-#include "../../Types/R.c"
-#include "../../Types/I.c"
-#include "../../Types/J.c"
+#include "../../Types/types.c"
 #include "identify.c"
 
 void cleanLineOfFile(FILE *, char *);
 char *splitLabel(char *string);
-
-int main(){
-    FILE *input;
-    char str[101];
-
-    input = fopen("file 3.1.asm", "r");
-    cleanLineOfFile(input, str);
-}
 
 void cleanLineOfFile(FILE *file, char *string){
     char *aux;

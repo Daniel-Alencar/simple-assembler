@@ -79,26 +79,6 @@ Concatenar os valores do guardarResultado
 -00 0000 0000 0000 0000 0000 0000 #target address
 
 
-// =========================================================================================== //
-
-=======> Leitura do assembly
-====> Comentários
-==> "#(a,b)* add $s0, $s1, $s2\n"
-
-
-
-==> "add $s0, $s1, $s2 #(a,b)*\n"
-
-====> Linha vazia
-==> "\n"
-
-====> Labels
-==> "main: jr $s0\n" => [X]
-==> "main:\n" => [X]
-==> "main: #(comentário)\n" => [X]
-
-// =========================================================================================== //
-
 // Tratando comentários e linha com caracter vazio //
 
 str = "main: \0(comentário)"
