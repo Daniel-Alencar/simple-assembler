@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "./Libs/common.h"
 
 int main(int argc, char *argv[]){
     if(argc > 3 || argc < 2){

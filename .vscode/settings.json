@@ -8,6 +8,8 @@
         "cstdio": "c",
         "types.h": "c",
         "prototype.h": "c",
-        "global.h": "c"
+        "global.h": "c",
+        "clean.h": "c",
+        "useful.c": "cpp"
     }
 }
