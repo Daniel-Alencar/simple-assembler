@@ -3,9 +3,15 @@
 #include <string.h>
 #include "../useful lib/global.h"
 #include "../clean lib/prototype.h"
-#include "../../Types/types.h"
+#include "../clean lib/removetokens.c"
+#include "../clean lib/separatetokens.c"
+#include "../clean lib/switchposition.c"
 #include "../useful lib/useful.h"
 #include "../useful lib/useful.c"
+#include "../../Types/types.h"
+#include "../../Types/R.c"
+#include "../../Types/I.c"
+#include "../../Types/J.c"
 #include "identify.c"
 
 void cleanLineOfFile(FILE *, char *);
