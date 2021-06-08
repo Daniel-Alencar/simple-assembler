@@ -12,7 +12,6 @@ int main(){
     char str[101];
 
     input = fopen("file 3.1.asm", "r");
-
     cleanLineOfFile(input, str);
 }
 

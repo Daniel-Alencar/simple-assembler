@@ -1,6 +1,6 @@
 qualquer1: add $s0 $zero $zero # (comentário)
   add $s1 $zero $zero
-  # (comentário)
+# (comentário) lembrar do espaço
 qualquer3: addi $t0 $zero 6
 qualquer4: addi $t1 $zero 12
 qualquer5: addi $t2 $zero 3

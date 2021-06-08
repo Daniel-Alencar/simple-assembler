@@ -3,30 +3,32 @@
 #include <string.h>
 
 void identifyInstruction(char **instructions, int amount){
-    int line = 0;
-    char *part, *aux, *locale;
+    int line;
+    char *aux, string[101], part[101], opcodeOrFunction[10];
     FILE *funcoes;
 
-    funcoes = fopen("../../Importante/funcoes.txt", "r");
+    funcoes = fopen("../../Importante/funcoes.txt", "r+");
 
-    printf("--%s--\n", fgets(aux, 101, funcoes));
-    // if(!fgets(aux, 101, funcoes)){
-    //     printf("%s-%d\n", aux, line);
-    // }
-    // for(int i = 0; i < amount; i++){
-    //     part = strtok(instructions[i], " ,");
+    for(int i = 0; i < amount; i++){
+        line = 0;
 
-    //     do{
-    //         if(!fgets(aux, 101, funcoes)){
-    //             printf("%s-%d\n", aux, line);
-    //             break;
-    //         }
+        strcpy(part, strtok(instructions[i], " ,"));
+        strcat(part, ":");
 
-    //         // fgets(aux, 101, funcoes);
-    //         // while(aux){
-    //         //     line++;
-                
-    //         // }
-    //     } while(!feof(funcoes));
-    // }
+        while(!feof(funcoes)){
+            fgets(string, 101, funcoes);
+
+            while(aux = strchr(string, '\n')){
+                aux[0] = '\0';
+            }
+
+            line++;
+            if(aux = strstr(string, part)){
+                strncpy(opcodeOrFunction, strchr(string, ':') + 1, 6);
+                printf("%s\t%d\t%s\n", part, line, opcodeOrFunction);
+                break;
+            }
+        }
+        rewind(funcoes);
+    }
 }
