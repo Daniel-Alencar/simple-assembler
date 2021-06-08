@@ -20,7 +20,7 @@ void instructionI(char *instruction, char *opcode, char *result, int lineNumber)
     for(i = 0; strcmp(partsOfInstruction[1], registers[i]); i++);
     for(j = 0; strcmp(partsOfInstruction[2], registers[j]); j++);
 
-    for(k = 0, isLabel = 0; k < 32; k++){
+    for(k = 0, isLabel = 0; k < numbOfLabels; k++){
       if(!strcmp(labels[k], partsOfInstruction[3])){
         isLabel = 1;
         break;
@@ -54,5 +54,4 @@ void instructionI(char *instruction, char *opcode, char *result, int lineNumber)
     }
 
     strcat(result, temporary);
-    printf("%s\n", result);
 }

@@ -1,11 +1,4 @@
-// int main(){
-//     int rowOnFile = 1;
-//     char instruction[] = "add $s0, $s1, $s2", result[33];
-
-//     instructionR(instruction, "100100", result, rowOnFile);
-// }
-
-void instructionR(char *instruction, char *function, char *result, int lineNumber){
+void instructionR(char *instruction, char *function, char *result){
     int i, rs = 2, rd = 1;
     char *partsOfInstruction[4], temporary[17];
     
@@ -41,5 +34,4 @@ void instructionR(char *instruction, char *function, char *result, int lineNumbe
     strcat(result, "00000");
 
     strcat(result, function);
-    printf("%s\n", result);
 }
