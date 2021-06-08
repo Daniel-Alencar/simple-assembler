@@ -34,6 +34,8 @@ int main(int argc, char *argv[]){
                 puts("Erro 3!");
                 exit(3);
             }
+
+            cleanLineOfFile(inputFile, outputFile);
         }
     }
 }

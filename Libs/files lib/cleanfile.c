@@ -1,8 +1,7 @@
-void cleanLineOfFile(FILE *file, char *string){
+void cleanLineOfFile(FILE *file, FILE *out){
     char *aux;
-    char aux1;
-    int numberOfLabels = 0, linePosition = 0;
-    int changeNumberOfLabels = 0;
+    char aux1, string[101];
+    int numberOfLabels = 0, linePosition = 0, changeNumberOfLabels = 0;
     char **instructions;
 
     instructions = (char **)malloc(sizeof(char *));
@@ -77,7 +76,7 @@ void cleanLineOfFile(FILE *file, char *string){
     } while(!feof(file));
 
     numbOfLabels = numberOfLabels;
-    identifyInstruction(instructions, linePosition);
+    identifyInstruction(instructions, out, linePosition);
 }
 
 char *splitLabel(char *string){
@@ -98,7 +97,7 @@ char *splitLabel(char *string){
     return NULL;
 }
 
-void identifyInstruction(char **instructions, int amount){
+void identifyInstruction(char **instructions, FILE *out, int amount){
     int line;
     char *aux, string[101], part[101], opcodeOrFunction[10], backup[101], result[101];
     FILE *funcoes;
@@ -137,12 +136,18 @@ void identifyInstruction(char **instructions, int amount){
                         instructionJ(backup, opcodeOrFunction, result);
                         break;
                     default :
-                        puts("default");
+                        puts("ERRO 42!");
+                        exit(42);
                         break;
                 }
             }
         }
         rewind(funcoes);
-        printf("%s\n", result);
+        printf("-%s-\n", result);
+            // writeInFile(result, out);
     }
+}
+
+void writeInFile(char *string, FILE *output){
+    printf("%s\n", string);
 }
