@@ -28,14 +28,14 @@ void identifyInstruction(char **instructions, int amount){
                         printf("-%s = ", backup);
                         instructionR(backup, opcodeOrFunction, end, amount);
                         break;
-                    // case 2 :
-                    //     printf("--%s\t", backup);
-                    //     instructionI(backup, opcodeOrFunction, result, amount);
-                    //     break;
-                    // case 3 :
-                    //     printf("---%s\t", backup);
-                    //     instructionJ(backup, opcodeOrFunction, result);
-                    //     break;
+                    case 2 :
+                        printf("--%s = \t", backup);
+                        instructionI(backup, opcodeOrFunction, end, amount);
+                        break;
+                    case 3 :
+                        printf("---%s = \t", backup);
+                        instructionJ(backup, opcodeOrFunction, end);
+                        break;
                     default :
                         puts("default");
                         break;

@@ -45,6 +45,11 @@ void cleanLineOfFile(FILE *file, char *string){
         while((aux = strchr(string, '#'))){
             strcpy(aux, "\0");
         }
+
+        //remove \n
+        while((aux = strchr(string, '\n'))){
+            strcpy(aux, "\0");
+        }
         
         //substitui tab por espaço
         int i = 0;
@@ -59,7 +64,7 @@ void cleanLineOfFile(FILE *file, char *string){
         }
 
         //se for linha válida
-        if(strcmp(string, "\n") && strcmp(string, "\0") && strcmp(string, " ")){
+        if(strcmp(string, "\0") && strcmp(string, " ")){
             aux = splitLabel(string);
             if(aux){
                 numberOfLabels++;
@@ -81,7 +86,7 @@ void cleanLineOfFile(FILE *file, char *string){
             }
             //se após remover o label sobrou alguma instrução válida
             
-            if(strcmp(string, "\n") && strcmp(string, "\0") && strcmp(string, " ")){
+            if(strcmp(string, "\0") && strcmp(string, " ")){
                 linePosition++;
                 
                 if(changeNumberOfLabels) {
