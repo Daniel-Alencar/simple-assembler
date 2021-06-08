@@ -13,5 +13,5 @@
 #include "./../Types/types.h"
 #include "./../Types/types.c"
 
-#include "./files lib/cleanfile.h"
-#include "./files lib/cleanfile.c"
+#include "./files lib/manipulationfile.h"
+#include "./files lib/manipulationfile.c"

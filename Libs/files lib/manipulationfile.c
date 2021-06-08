@@ -149,5 +149,15 @@ void identifyInstruction(char **instructions, FILE *out, int amount){
 }
 
 void writeInFile(char *string, FILE *output){
-    fputs(string, output);
+    char part[10];
+    int j, i;
+
+    for(i = 3; i >= 0; i--){
+        for(j = 0; j < 8; j++) {
+            part[j] = string[(i * 8) + j];
+        }
+        part[j] = '\0';
+        strcat(part, "\n");
+        fputs(part, output);
+    }
 }
