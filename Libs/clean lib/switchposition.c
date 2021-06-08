@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 void switchPosition(char *instruction){
   char *first, *aux;
   int lenght;

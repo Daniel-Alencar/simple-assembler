@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-
 void separateTokens(char *string, char *array[]){
     int i = 0;
     char *character = strtok(string, ",() ");

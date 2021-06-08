@@ -1,20 +1,9 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "../Libs/useful lib/useful.c"
-#include "../Libs/useful lib/global.c"
-#include "../Libs/clean lib/switchposition.c"
-#include "../Libs/clean lib/removetokens.c"
-#include "../Libs/clean lib/separatetokens.c"
+// int main(){
+//     int rowOnFile = 1;
+//     char instruction[] = "add $s0, $s1, $s2", result[33];
 
-void instructionR(char *instruction, char *function, char *result, int lineNumber);
-
-int main(){
-    int rowOnFile = 1;
-    char instruction[] = "add $s0, $s1, $s2", result[33];
-
-    instructionR(instruction, "100100", result, rowOnFile);
-}
+//     instructionR(instruction, "100100", result, rowOnFile);
+// }
 
 void instructionR(char *instruction, char *function, char *result, int lineNumber){
     int i, rs = 2, rd = 1;

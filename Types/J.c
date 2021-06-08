@@ -1,18 +1,10 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "../Libs/useful lib/useful.c"
-#include "../Libs/useful lib/global.c"
- 
-void instructionJ(char *instruction, char *opcode, char *result);
+// int main() {
+//   char instruction[] = "j for";
+//   char result[33];
 
-int main() {
-  char instruction[] = "j for";
-  char result[33];
-
-  instructionJ(instruction, "000010", result);
-  printf("%s\n", result);
-}
+//   instructionJ(instruction, "000010", result);
+//   printf("%s\n", result);
+// }
 
 void instructionJ(char *instruction, char *opcode, char *result){
   int i;

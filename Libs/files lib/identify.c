@@ -1,13 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 void identifyInstruction(char **instructions, int amount){
     int line;
     char *aux, string[101], part[101], opcodeOrFunction[10];
     FILE *funcoes;
 
-    funcoes = fopen("../../Importante/funcoes.txt", "r+");
+    funcoes = fopen("../../Importante/funcoes.txt", "r");
 
     for(int i = 0; i < amount; i++){
         line = 0;
@@ -25,8 +21,21 @@ void identifyInstruction(char **instructions, int amount){
             line++;
             if(aux = strstr(string, part)){
                 strncpy(opcodeOrFunction, strchr(string, ':') + 1, 6);
-                printf("%s\t%d\t%s\n", part, line, opcodeOrFunction);
                 break;
+            }
+
+            switch(line){
+                case 1 :
+                    printf("%s\n", string);
+                    //instructionR(char *instruction, char *function, char *result, int lineNumber)
+                    break;
+                case 2 :
+                    break;
+                case 3 :
+                    break;
+                default :
+                    puts("default");
+                    break;
             }
         }
         rewind(funcoes);

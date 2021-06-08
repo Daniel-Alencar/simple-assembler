@@ -1,18 +1,7 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "../Libs/useful lib/useful.c"
-#include "../Libs/useful lib/global.c"
-#include "../Libs/clean lib/switchposition.c"
-#include "../Libs/clean lib/removetokens.c"
-#include "../Libs/clean lib/separatetokens.c"
-
-void instructionI(char *instruction, char *opcode, char *result, int lineNumber);
-
-int main(){
-    char instruction[] = "sw $s0, 33($s1)", result[33];
-    instructionI(instruction, "101011", result, 1);
-}
+// int main(){
+//     char instruction[] = "sw $s0, 33($s1)", result[33];
+//     instructionI(instruction, "101011", result, 1);
+// }
 
 void instructionI(char *instruction, char *opcode, char *result, int lineNumber){
     int i, j, k, isLabel;

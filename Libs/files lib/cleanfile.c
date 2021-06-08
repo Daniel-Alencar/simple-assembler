@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../useful lib/global.c"
+#include "../useful lib/global.h"
+#include "../clean lib/prototype.h"
+#include "../../Types/types.h"
+#include "../useful lib/useful.h"
+#include "../useful lib/useful.c"
 #include "identify.c"
 
 void cleanLineOfFile(FILE *, char *);
@@ -32,19 +36,19 @@ void cleanLineOfFile(FILE *file, char *string){
         }
         
         //remove comentario da linha
-        while(aux = strchr(string, '#')){
+        while((aux = strchr(string, '#'))){
             strcpy(aux, "\0");
         }
         
         //substitui tab por espaço
         int i = 0;
-        while(aux1 = string[i], aux1 == '\t') {
+        while((aux1 = string[i], aux1 == '\t')) {
             aux = strchr(string, '\t');
             strcpy(aux, aux + 1);
             i++;
         }
         
-        while(aux = strchr(string, '\t')) {
+        while((aux = strchr(string, '\t'))) {
             aux[0] = ' ';
         }
 
@@ -60,13 +64,13 @@ void cleanLineOfFile(FILE *file, char *string){
                 strcpy(labels[numberOfLabels - 1], aux);
 
                 //remove espaços do label
-                while(aux = strchr(labels[numberOfLabels - 1], ' ')){
+                while((aux = strchr(labels[numberOfLabels - 1], ' '))){
                     strcpy(aux, aux + 1);
                 }
             }
 
             //remove labels da string
-            while(aux = strchr(string, ':')){
+            while((aux = strchr(string, ':'))){
                 strcpy(string, aux + 1);
             }
             //se após remover o label sobrou alguma instrução válida
@@ -95,7 +99,7 @@ char *splitLabel(char *string){
     char *result;
     result = (char *)malloc(sizeof(char));
 
-    for(int i = 0; i < strlen(string); i++){
+    for(unsigned int i = 0; i < strlen(string); i++){
         if(string[i] != ':'){
             result = (char *)realloc(result, sizeof(char) * (i + 1));
             result[i] = string[i];

@@ -1,15 +1,4 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-#include "./useful.h"
-
-// int main() {
-//   int number = -42;
-//   char *str = convertDecimalToBinary(number);
-//   printf("%s\n", str);
-// }
-
-char *convertDecimalToBinary(int decimal, int amount) {
+char *convertDecimalToBinary(int decimal, int amount){
   int i, restoDaDivisaoInt, originalDecimal = decimal;
   char restoDaDivisaoChar;
   char *binaryNumber = (char *) malloc(sizeof(char) * 33);
@@ -43,10 +32,8 @@ char convertIntegerToCaracter(int number) {
 }
 
 void reverseString(char *string) {
-  int i, length;
+  int i, length = strlen(string);
   char aux;
-
-  length = lengthOfString(string);
   
   for(i = 0; i < (length / 2); i++) {
     aux = string[i];
@@ -63,7 +50,7 @@ int lengthOfString(char *string) {
 }
 
 void complementOfOne(char *binaryNumber) {
-  int i;
+  unsigned int i;
   for(i = 0; i < strlen(binaryNumber); i++){
     binaryNumber[i] = convertIntegerToCaracter((binaryNumber[i] - '0') ^ 1);
   }
@@ -88,7 +75,7 @@ void complementOfTwo(char binaryNumber[], int amount) {
 
 void fillWithZeros(char string[], int amount) {
   sprintf(string, "%0*d", amount, atoi(string));
-  for(int i = 0; i < strlen(string); i++) {
+  for(unsigned int i = 0; i < strlen(string); i++) {
     if(string[i] == ' ') {
       string[i] = '0';
     }
