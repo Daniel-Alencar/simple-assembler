@@ -26,7 +26,6 @@ int main(int argc, char *argv[]){
             if(argc == 2){
                 outputFile = fopen(defaultName, "w");
             } else {
-                strcat(argv[2], ".dat");
                 outputFile = fopen(argv[2], "w");
             }
             if(!outputFile){
