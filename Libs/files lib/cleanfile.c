@@ -103,6 +103,7 @@ void cleanLineOfFile(FILE *file, char *string){
         }
     } while(!feof(file));
 
+    numbOfLabels = numberOfLabels;
     identifyInstruction(instructions, linePosition);
 }
 
@@ -110,7 +111,9 @@ char *splitLabel(char *string){
     char *result;
     result = (char *)malloc(sizeof(char));
 
-    for(unsigned int i = 0; i < strlen(string); i++){
+    for(unsigned int i = 0; i < 
+    
+    strlen(string); i++){
         if(string[i] != ':'){
             result = (char *)realloc(result, sizeof(char) * (i + 1));
             result[i] = string[i];

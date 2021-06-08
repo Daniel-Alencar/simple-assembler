@@ -1,6 +1,6 @@
 void identifyInstruction(char **instructions, int amount){
     int line;
-    char *aux, string[101], part[101], opcodeOrFunction[10], backup[101], end[101];
+    char *aux, string[101], part[101], opcodeOrFunction[10], backup[101], result[101];
     FILE *funcoes;
 
     funcoes = fopen("../../Importante/funcoes.txt", "r");
@@ -14,7 +14,9 @@ void identifyInstruction(char **instructions, int amount){
         strcat(part, ":");
 
         while(!feof(funcoes)){
-            fgets(string, 101, funcoes);
+            if(!fgets(string, 101, funcoes)){
+                break;
+            }
 
             while((aux = strchr(string, '\n'))){
                 aux[0] = '\0';
@@ -22,19 +24,17 @@ void identifyInstruction(char **instructions, int amount){
 
             line++;
             if((aux = strstr(string, part))){
-                strncpy(opcodeOrFunction, strchr(string, ':') + 1, 6);
+                strncpy(opcodeOrFunction, strchr(aux, ':') + 1, 6);
+
                 switch(line){
                     case 1 :
-                        printf("-%s = ", backup);
-                        instructionR(backup, opcodeOrFunction, end, amount);
+                        instructionR(backup, opcodeOrFunction, result);
                         break;
                     case 2 :
-                        printf("--%s = \t", backup);
-                        instructionI(backup, opcodeOrFunction, end, amount);
+                        instructionI(backup, opcodeOrFunction, result, i + 1);
                         break;
                     case 3 :
-                        printf("---%s = \t", backup);
-                        instructionJ(backup, opcodeOrFunction, end);
+                        instructionJ(backup, opcodeOrFunction, result);
                         break;
                     default :
                         puts("default");
@@ -43,6 +43,6 @@ void identifyInstruction(char **instructions, int amount){
             }
         }
         rewind(funcoes);
-        //printf("%s\n", end);
+        printf("%s\n", result);
     }
 }
