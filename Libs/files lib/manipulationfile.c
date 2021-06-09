@@ -145,6 +145,8 @@ void identifyInstruction(char **instructions, FILE *out, int amount){
         }
         rewind(funcoes);
         writeInFile(result, out);
+
+        fclose(funcoes);
     }
 }
 
