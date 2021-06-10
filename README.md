@@ -21,7 +21,6 @@ As instruções aceitas pelo myCPU são divididas em três tipos: R, I e J. Por 
 |   lw      |  I | 100011 |        |
 |   sw      |  I | 101011 |        |
 |   jr      |  R |        | 001000 |
-|           |    |        |        |
 
 O número de instruções aceitas é flexível, ou seja, podem ser adicionadas ou removidas instruções quando desejado, de acordo com o seguinte padrão:
 
