@@ -48,7 +48,7 @@ $ cd simple-assembler
 
 ```bash
 # Compilando o arquivo
-$ gcc -o assembler.c
+$ gcc assembler.c -o assembler
 ```
 
 Será gerado um arquivo assembler.exe (windows) e um arquivo assembler.out (no Linux).
