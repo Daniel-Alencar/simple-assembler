@@ -35,9 +35,6 @@ int main(int argc, char *argv[]){
             }
 
             cleanLineOfFile(inputFile, outputFile);
-
-            fclose(inputFile);
-            fclose(outputFile);
         }
     }
 }
