@@ -6,6 +6,7 @@ int main(int argc, char *argv[]){
         puts("Digite: [executavel] [arquivo_de_entrada.asm] [arquivo_de_saida](opcional)");
         puts("Erro 0!");
         exit(0);
+        
     } else {
         FILE *inputFile, *outputFile;
         int typePosition = strlen(argv[1]) - strlen(".asm");
