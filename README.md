@@ -1,64 +1,66 @@
 # Simple Assembler
-Montador (assembler) para o processador myCPU, uma CPU RISC simples e baseada no MIPS. O código de saída é um arquivo binário que representa o mapa de memória que será utilizado em um simulador da CPU.
 
-## Especificações
+Assembler for the **myCPU** processor, a simple RISC CPU based on MIPS. The output is a binary file representing the memory map that will be used in the CPU simulator.
 
-As instruções aceitas pelo myCPU são divididas em três tipos: R, I e J. Por padrão, o Simple Assembler aceita as seguintes instruções:
+## Specifications
 
-| Instrução |Tipo| Opcode | Funct  |
-|-----------|----|--------|--------|
-|   add     |  R |        | 100000 |
-|   addi    |  I | 100000 |        |
-|   sub     |  R |        | 100000 |
-|   and     |  R |        | 100100 |
-|   xor     |  R |        | 100110 |
-|   or      |  R |        | 100101 |
-|   beq     |  I | 000100 |        |
-|   bne     |  I | 000101 |        |
-|   j       |  J | 100000 |        |
-|   jal     |  J | 000011 |        |
-|   slt     |  R |        | 101010 |
-|   lw      |  I | 100011 |        |
-|   sw      |  I | 101011 |        |
-|   jr      |  R |        | 001000 |
+The instructions supported by myCPU are divided into three types: **R**, **I**, and **J**. By default, the Simple Assembler accepts the following instructions:
 
-O número de instruções aceitas é flexível, ou seja, podem ser adicionadas ou removidas instruções quando desejado, de acordo com o seguinte padrão:
+| Instruction | Type | Opcode | Funct  |
+| ----------- | ---- | ------ | ------ |
+| add         | R    |        | 100000 |
+| addi        | I    | 100000 |        |
+| sub         | R    |        | 100000 |
+| and         | R    |        | 100100 |
+| xor         | R    |        | 100110 |
+| or          | R    |        | 100101 |
+| beq         | I    | 000100 |        |
+| bne         | I    | 000101 |        |
+| j           | J    | 100000 |        |
+| jal         | J    | 000011 |        |
+| slt         | R    |        | 101010 |
+| lw          | I    | 100011 |        |
+| sw          | I    | 101011 |        |
+| jr          | R    |        | 001000 |
 
-__As instruções estão no arquivo funcoes.txt, divididas como segue:__
+The set of accepted instructions is flexible — instructions can be added or removed as needed, following the pattern below:
 
->1 [instrução R]:[funct],
+**The instructions are stored in the file `funcoes.txt`, organized as follows:**
 
->2 [instrução I]:[opcode],
+> 1 `[R-instruction]:[funct]`,
+> 2 `[I-instruction]:[opcode]`,
+> 3 `[J-instruction]:[opcode]`,
 
->3 [instrução J]:[opcode],
+Where lines **1**, **2**, and **3** refer to the respective sections of the file.
 
-Onde 1, 2 e 3 indicam as linhas do arquivo.
+---
 
-## Rodando a aplicação
+## Running the Application
+
 ```bash
-# Clonando o repositório
+# Cloning the repository
 $ git clone https://github.com/Daniel-Alencar/simple-assembler
 ```
 
 ```bash
-# Acesse a pasta do projeto no terminal/cmd
+# Navigate to the project folder
 $ cd simple-assembler
 ```
 
 ```bash
-# Compilando o arquivo
+# Compiling the program
 $ gcc assembler.c -o assembler
 ```
 
-Será gerado um arquivo assembler.exe (windows) e um arquivo assembler.out (no Linux).
+This will generate `assembler.exe` (Windows) or `assembler.out` (Linux).
 
 ```bash
-# Execute da seguinte forma
-# linux
-$ ./assembler [arquivo_de_entrada.asm] [nome_do_arquivo_de_saída](opcional)
+# Running the assembler
+# Linux
+$ ./assembler [input_file.asm] [output_filename] (optional)
 
-# windows
-$ assembler [arquivo_de_entrada.asm] [nome_do_arquivo_de_saída](opcional)
+# Windows
+$ assembler [input_file.asm] [output_filename] (optional)
 ```
 
-Isto gerará um nome_do_arquivo_de_saída.dat com a sequência em binário das instruções (usando a estratégia little-endian) do arquivo de entrada que foi passado.
+This will generate `output_filename.dat` containing the binary sequence of the instructions (using little-endian format) extracted from the provided input file.
